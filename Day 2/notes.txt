@@ -1,0 +1,8 @@
+A - Rock        - 1 pt
+B - Paper       - 2 pt
+C - Scissors    - 3 pt
+
+Lose            - 0 pt
+Draw            - 3 pt
+Win             - 6 pt
+
