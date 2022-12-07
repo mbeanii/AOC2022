@@ -2,7 +2,7 @@ rps_map = {
     "A": {
         "Z": 0, # Lose
         "Y": 6, # Win
-        "X": 4, # Tie
+        "X": 3, # Tie
     },
     "B": {
         "X": 0, # Lose
@@ -23,7 +23,7 @@ with open("input.txt", "r") as f:
     input_list = f.readlines()
 
 score = 0
-for line in input_list:                # Desk check against example
+for line in input_list:                # Manual check against example
     score += rps_map[line[2]]          # 2 1 3
     score += rps_map[line[0]][line[2]] # 6 0 3
 
