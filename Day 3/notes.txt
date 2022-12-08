@@ -1,0 +1,23 @@
+Part One
+X Approach: Divide line into halves. There's probably a library that will do this, but slicing on len(line)/2
+should do the trick.
+
+X Then for each char in the first half check to see if it's in the right half.
+More efficient would be to create a hashmap out of the right half, then instead of walking the
+string each time, it can be checked with a simple indexing operation.
+X Linear complexity instead of quadratic.
+
+X Once the duplicate is identified, its point value can be determined by ord. However, capital and lowercase
+will need to be handled separately due to "endianness"-esque noncompatibility, e.g., here a-z are the lower
+1-26 with A-Z as the upper 27-52.
+Rather than trying to deal with this, just determine whether it's upper-case, make it uppercase, get its ord,
+and subtract (ord('A') - 1), and conditionally add 26 if the original was lowercase.
+
+I actually identified each value as I went - it made for a nicer call, but presents an area for optimization.
+
+----------------------------------------------------------------------------------
+Part Two
+Groups of three instead
+Find the one item in common between all three
+
+Create maps and intersect their keys.

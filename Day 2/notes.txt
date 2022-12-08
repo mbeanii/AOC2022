@@ -1,8 +1,27 @@
-A - Rock        - 1 pt
-B - Paper       - 2 pt
-C - Scissors    - 3 pt
+A/X - Rock      - X 1 pt
+B/Y - Paper     - Y 2 pt
+C/Z - Scissors  - Z 3 pt
 
 Lose            - 0 pt
 Draw            - 3 pt
 Win             - 6 pt
 
+Example
+A Y             # 2+6=8
+B X             # 1+0=1
+C Z             # 3+3=6
+
+                # 15
+
+------------------------
+Part 2
+X - Lose
+Y - Draw
+Z - Win
+
+Example
+A Y (to Draw, play Rock) # 1+3=4
+B X (to Lose, play Rock) # 1+0=1
+C Z (to Win, play Rock)  # 1+6=7
+
+                         # 12
