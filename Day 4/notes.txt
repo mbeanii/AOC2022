@@ -1,0 +1,37 @@
+Part One:
+Each input line may be described as a:
+
+set of two sets of numbers.
+The inner sets are separated by dashes.
+The outer sets are separated by commas.
+
+What we want is the number of times one set fully
+contains the other.
+
+That could mean the first set fully contains the second
+Or the second fully contains the first.
+
+One approach would be to enumerate both sets
+and do a X & Y and see if the result is the same length
+as either X or Y
+
+But simpler will be:
+
+One set fully encorporates the other if the first
+number of one is greater than or equal to the first
+number of the other AND the second number of the
+first is less than or equal to the second number
+of the second.
+I'm ready to start coding.
+
+K that's wrong above. It's actually one encorporates
+the other IFF both the first and second of one fall
+between (inclusive) the first and second of the other.
+
+My logic for this isn't working and I'm tired of it.
+I'm going to try the set approach.
+After resolving an off by 1 issue with the range function, I got that working :)
+
+-------------
+Part 2:
+Easy here - it's just the same only the check is to see if the intersection is not 0.
