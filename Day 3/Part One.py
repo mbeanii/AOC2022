@@ -19,22 +19,22 @@ def create_map(_str: str) -> dict:
     return _map
 
 
-if __name__ == "__main__":
-    with open("inputs.txt", "r") as f:
-        input_list = f.read().splitlines()
 
-    sum = 0
-    for line in input_list:
-        half_mark = int(len(line)/2)
+with open("input.txt", "r") as f:
+    input_list = f.read().splitlines()
 
-        left  = line[:half_mark]
-        right = line[half_mark:]
+sum = 0
+for line in input_list:
+    half_mark = int(len(line)/2)
 
-        _map = create_map(right)
+    left  = line[:half_mark]
+    right = line[half_mark:]
 
-        for character in left:
-            if character in _map:
-                sum += _map[character]
-                break
+    _map = create_map(right)
 
-    print(sum)
+    for character in left:
+        if character in _map:
+            sum += _map[character]
+            break
+
+print(sum)

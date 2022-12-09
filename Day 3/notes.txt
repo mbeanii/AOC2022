@@ -13,11 +13,17 @@ will need to be handled separately due to "endianness"-esque noncompatibility, e
 Rather than trying to deal with this, just determine whether it's upper-case, make it uppercase, get its ord,
 and subtract (ord('A') - 1), and conditionally add 26 if the original was lowercase.
 
-I actually identified each value as I went - it made for a nicer call, but presents an area for optimization.
-
+I actually identified priority for every character - it made for a nicer call, but presents an area for optimization.
+7428
 ----------------------------------------------------------------------------------
 Part Two
 Groups of three instead
 Find the one item in common between all three
 
 Create maps and intersect their keys.
+
+I also implemented the optimization described above by using sets instead of
+maps - only need to calculate one priority per set of inputs instead of one for
+each character.
+
+2650
