@@ -1,0 +1,46 @@
+Part One:
+First, need a parser to read the diagram into an array of stacks.
+
+Second, I need a command parser to translate the text into a:
+stack_array[i].push(stack_array[j].pop())
+
+And I think that's it.
+
+Diagram parser:
+A blank line separates the diagram from the commands, so can use .split("\n\n") to divide
+input into diagram and commands.
+Then I think if I strip out [] and spaces I can use a 2D array temporarily...
+Then a nested for loop to read from the bottom of the first:
+-- skip the number - can just use stack_array indexes from here on
+-- init temp stack
+-- push the bottom number
+-- push the next, etc.
+Then onto the next number, etc.
+
+Once finished I'll have a stack_array of n columns containing letters in the right order.
+
+
+Command parser:
+split() to divide inputs
+don't need the words at all (index 0, 2, 4)
+int() the numbers (index 1, 3, 5)
+index 1: num_to_move
+index 3: source_index (decrement by 1)
+index 5: destination_index (decrement by 1)
+
+
+Make as a Stacks class with stack_array object and __init__(self, input: str)
+It will:
+Divide the input into stack_map and stack_commands
+Call the diagram parser to set stack_array.
+for each line in stack_commands:
+    parse_one(line: str) -> num_to_move, source_index, destination_index
+    move_one(num_to_move, source_index, destination_index)
+for stack_ in stack_array:
+    print(stack_.pop(), end="")
+
+I think that'll do it.
+Beginning.
+
+Part 2:
+I just used a quick and dirty temp stack to switch the order back in my move_one method.

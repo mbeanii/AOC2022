@@ -7,6 +7,6 @@ for line in input_list:
     set1 = set(range(int(outer[0][0]), int(outer[0][1])+1))
     set2 = set(range(int(outer[1][0]), int(outer[1][1])+1))
     intersection = set1 & set2
-    if(len(intersection)):
+    if(intersection):
         count += 1
 print(count)
