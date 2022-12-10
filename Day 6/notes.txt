@@ -1,0 +1,14 @@
+Part One:
+start-of-packet marker
+Detect four characters that are all different
+
+Identify the first position where the four most recently received characters were all different
+
+(The number of characters from the beginning of the buffer to the end of the first such four-character marker)
+
+could use a sliding window
+throw it into a set
+if len(set) == len(window) - done
+otherwise, inc the window
+
+I think this should be pretty easy.
