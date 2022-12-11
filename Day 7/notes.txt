@@ -1,0 +1,70 @@
+Part One:
+Puzzle input is a bunch of cd commands to explore a filesystem.
+
+The ask is to find the size of each directory in the filesystem.
+- Files contained
+- All files contained in directories contained therein (recursively)
+
+ACTUALLY more specifically, they want the:
+sum of the total sizes of all directories with a total size of at MOST 100000
+
+
+This is like a tree traversal, except the traversal is given to us and we must construct
+the tree from the traversal. Interesting.
+
+First will be to construct the filesystem from the commands.
+
+Second will be to determine total sizes for each directory.
+
+I think a File class and a Directory class will serve.
+
+File class to have a size and a list_of_parent_directories.
+
+Then we could have a global object which references all files so when we want to
+determine the size of all directories, we don't have to walk the tree at all. No 
+recursion. Just iterate the list of files and update all directories...
+
+Probably more clunky than the recusion way if I'm honest and not much of a benefit
+there, just made it more confusing and more areas for bugs to creep in. The global
+file object idea might be a good one though - then we don't have to recursively walk
+the entire tree once it's built - we can just walk from each file to the base.
+
+It would also be helpful to have a list of directories we could inspect at the end to
+easily identify directories "with a total size of at most 100000." That to avoid having
+to walk the entire tree at the end. It may also be helpful to the parser method. But again,
+may not be really necessary?
+
+I think I'll include it.
+
+So.
+
+File has a size and a parent directory. Does it need a name? Probably not.
+
+Directory has a total size, parent directory, a list of child directories, and a list of files.
+
+Filesystem has a list of files, a list of directories, and a root directory.
+It has a command parser method which creates the list of files and root directory.
+It has a directory total size calculator which it runs after the command parser is complete.
+
+The caller will instantiate a filesystem object and a sum.
+The caller will add onto the sum the size of each directory in the filesystem whose
+size is less than or equal to 100000.
+
+Worked :)
+
+-------------------------------------------------------------
+Part Two:
+
+Total disk space: 70000000
+Need at least 30000000
+
+Find the smallest directory that if deleted, would free up enough space on
+the filesystem to run the update.
+
+First, how much more space do I need?
+needed_additional_space = filesystem.root_dir.total_size - 40000000
+
+Second, which directories in the filesystem are smaller than that?
+min([x.total_size for x in filesystem.master_dir_list if x.total_size <= space_needed])
+
+And last, which is the smallest (handled with "min" above)
