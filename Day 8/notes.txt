@@ -1,0 +1,84 @@
+Part One:
+As left, right, up, and down will all follow
+the same logic, I will just solve "up"/"above"
+for now, then generalize the solution.
+
+Somehow every node needs to know, not only
+the height of the tree directly above it, but
+also the tallest tree of any of the trees above
+it.
+
+I could inspect every tree above, but that seems
+inefficient.
+
+The solution I have in mind is to walk the grid and
+memoize the tallest we've seen so far for a given col.
+
+It would be more efficient, but far less simple.
+
+I think in this case I may go for simplicity over
+efficiency and just inspect every tree above.
+
+
+Right. So. Baby solution. Crazy inefficient - something
+like N^3 since we have to walk the 2D array (N^2) and
+for each element walk 4 paths to the edge (2*N).
+
+With a 99*99 grid, it should be ok though. Wouldn't want
+to apply this algorightm to something that could grow much
+more though... yeesh.
+
+K. Crazy simple.
+
+count = 0
+for i in rows
+  for j in cols
+    count += check_above or check_left or check_right or check_below
+print(count)
+
+def check_above(num, arr) -> Bool: # Others will be similar
+  """ Pass in the number and a list of nums above """
+  return (num > max(arr))
+
+  Cool. I think that's it.
+  I can probably generalize the function and possibly simplify the call.
+  But that's enough to start with.
+
+  All of the trees between it and the edge of the grid are shorter than it
+  for tree in trees_between_me_and_edge:
+    if tree < me:
+      True
+  if all True
+
+  That approach worked eventually and I even got it onto one line.
+  But it was buggy. A less concise approach would have served I think.
+  It took longer, but I learned a lot :) Still, I think I'll be a little
+  less tryhard for part two because my brain hurts.
+
+  Part Two:
+  What is the highest scenic_score possible for any tree?
+
+  scenic_score =
+    num_trees_visible_above *
+    num_trees_visible_below *
+    num_trees_visible_left *
+    num_trees_visible_right
+
+  I've already figured out how to isolate all of the trees in each of these directions.
+  The new part here is calculating a score...
+  I think if I make a new method:
+
+  get_num_visible(me: int, trees_closest_first: list) -> int:
+     """ Returns the number of elements in the array from the beginning
+     through the first element greater than or equal to 'me' """
+
+  Then the only trick will be making sure the lists are in the right
+  order - 
+  above: currently is <beginning> to <me> (backwards) - needs flipping.
+  below: currently is <me> to <end> - correct
+  left: currently is <beginning> to <me> (backwards) - needs flipping.
+  right: currently is <me> to <end> - correct
+
+  Beginning :)
+
+  Yes, bugs were much easier to find using a more straightforward approach.
