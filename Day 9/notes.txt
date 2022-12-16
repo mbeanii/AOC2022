@@ -1,0 +1,65 @@
+Part One:
+Head and tail must always be touching - diagonally counts. Overlap counts.
+
+If the head is ever two steps directly up, down, left, or right from the tail,
+the tail must also move one step in that direction so it remains close enough
+
+Otherwise, if the head and tail aren't touching and aren't in the same row or column,
+the tail always moves one step diagonally to keep up.
+
+Head and Tail start at same position overlapping (0,0)
+
+Head input moves the head. Tail follows using the above rules.
+
+After the head input:
+HOW MANY TOTAL SPACES HAS THE TAIL VISITED AT LEAST ONCE?
+
+k. So.
+I don't want to do a visual model or have any arrays.
+
+Easier I think to have a cartesian (row, column) address system.
+Just need to keep track of four values:
+head_row
+head_col
+
+tail_row
+tail_col
+
+How about a "Point" class with a row and col?
+
+Model class:
+head (Point)
+tail (Point)
+visited_set (set of Points)
+_______________________________
+And a move_one(self, int, int) -> None
+"""Manager method - calls move_head, get_tail_dir, and move_tail_one"""
+move_head_one(self, int, int) -> None
+get_tail_deltas(self) -> (int, int)
+move_tail_one(self, int, int) -> None
+
+2547
+2587 too low
+6057
+
+Part 2:
+Most of the structure is the same.
+Differences:
+instead of just a head and a tail, now we have 10 nodes.
+I think a linked list is the way to go here.
+Move the head and then recursively move each knot
+
+Don't think I need a python list of knots - just a singly-linked
+list of knots:
+X -- Can just add a "next" to the knot class - "Point"
+
+X -- Then add an init_points method to Model creating 10 and setting the
+head to the first and the tail to the last. Probably don't need that
+actually... You know it's the tail if its "next" equals None.
+
+X-- so then move_tail_one becomes recursively_move_followers - the exit
+condition is if next == None; before exiting self.visited_set.add(copy(point))
+
+Think that'll do it.
+
+oop nope - gotta refactor get_follower_deltas to work on each point too.
