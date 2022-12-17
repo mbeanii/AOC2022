@@ -1,0 +1,43 @@
+Part One:
+consume each input line one at a time
+Have a separete loop inside which will run 1 or 2 times depending on the
+commmand split command, value
+if command == "noop":
+- num_cycles = 1
+elif command == "addx":
+- num_cycles = 2
+else:
+- raise UnrecognizedCommandError
+
+for i in range(num_cycles):
+- increment cycle counter
+- if cycle is in interesting_nums list:
+-- calculate signal_strength (cycle * value)
+-- add signal_strength to signal_strength_total
+- if i == 1:
+-- add addx value to register
+
+print signal_strength_total
+
+
+Cool. I think that'll work :)
+
+Part Two:
+Addition of the CRT draw to each cycle.
+It draws "during" the cycle, so after the cycle_counter has incremented,
+but before the register add.
+It will either write a "#" or a "." each cycle.
+It will write a "#" if (cycle % 40) in (register-1, register, register+1)
+Otherwise it writes a "." 
+If register % 40 == 0, it will write a newline after.
+
+There should be 6 lines and they should spell eight capital letters.
+
+###..#..#.###....##.###..###..#.....##..
+#..#.#.#..#..#....#.#..#.#..#.#....#..#.
+#..#.##...#..#....#.###..#..#.#....#..#.
+###..#.#..###.....#.#..#.###..#....####.
+#.#..#.#..#....#..#.#..#.#....#....#..#.
+#..#.#..#.#.....##..###..#....####.#..#.
+
+Cool!

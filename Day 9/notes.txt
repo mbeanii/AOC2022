@@ -49,7 +49,7 @@ instead of just a head and a tail, now we have 10 nodes.
 I think a linked list is the way to go here.
 Move the head and then recursively move each knot
 
-Don't think I need a python list of knots - just a singly-linked
+Don't think I need a python list (array) of knots - just a singly-linked
 list of knots:
 X -- Can just add a "next" to the knot class - "Point"
 
